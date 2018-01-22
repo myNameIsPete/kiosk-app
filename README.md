@@ -2,7 +2,8 @@
 
 Proposed JSON object:
 
-```{
+```
+{
   "name": "string",
   "bio": "string",
   "memorabilia": [
