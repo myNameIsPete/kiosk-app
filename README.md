@@ -9,6 +9,11 @@ npm run dev-server
 yarn run dev-server
 ```
 
+Some potential 3rd party modules?
+
+* [Swipeable Carousel](http://react-responsive-carousel.js.org/)
+* [Route Transitions](https://github.com/trungdq88/react-router-page-transition)
+
 Will run on http://localhost:8080/
 
 Colours are:
