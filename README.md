@@ -2,23 +2,21 @@
 
 Proposed JSON object:
 
-`
+```{
+  "name": "string",
+  "bio": "string",
+  "memorabilia": [
 {
-"name": "string",
-"bio": "string",
-"memorabilia": [
-{
-"title": "string",
-"description": "string",
-"image": "string"
+  "title": "string",
+  "description": "string",
+  "image": "string"
 },
 {
-...
+  ...
 }
 ],
-"sport_category": "string",
-"member_type": [],
-"video": "string"
+  "sport_category": "string",
+  "member_type": [],
+  "video": "string"
 }
-
-`
+```
