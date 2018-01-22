@@ -1,6 +1,17 @@
 # kiosk-app
 
-Proposed JSON object:
+Install all deps using NPM or yarn
+
+To run:
+
+```
+npm run dev-server
+yarn run dev-server
+```
+
+Will run on http://localhost:8080/
+
+Thinking that this could be the JSON object...
 
 ```
 {
