@@ -1,0 +1,46 @@
+/* ==| Header Section |============================== */
+
+header {
+  background-color: #3498db;
+  color: #fff;
+  padding-top: 25px;
+  height: 100px;
+  border-bottom: 1px solid #3469df;
+  position: relative;
+}
+
+header h1 {
+  margin: 0;
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+}
+
+/* ==| Side Navigation Section |============================== */
+
+.nav {
+  padding: 24px 0 0 0;
+  list-style: none;
+}
+
+.nav > li > a {
+  display: block;
+  padding: 12px 0;
+  color: rgb(141, 141, 141);
+  text-decoration: none;
+}
+
+.nav > li > a:hover {
+  color: #e74c3c;
+}
+
+.nav > li > a.is-active {
+  color: #3498db;
+}
+
+/* ==| Main Content Section |============================== */
+main {
+  padding-top: 24px;
+}
+
+main h1 {
+  color: rgb(89, 89, 89);
+}
