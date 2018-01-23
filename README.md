@@ -24,25 +24,50 @@ Red: #e74c3c
 
 Blue: #3498db
 
-Thinking that this could be the JSON object...
+Members JSON object...
 
 ```
 {
-  "name": "string",
-  "bio": "string",
-  "year_added": "number",
+  "name": "",
+  "year": "",
+  "bio": "",
+  "image": "",
+  "video": "",
+  "member_type": "",
+  "show_with_inductees": true,
   "memorabilia": [
     {
-      "title": "string",
-      "description": "string",
-      "image": "string"
+      "title": "",
+      "year": "",
+      "image": "",
+      "description": ""
     },
     {
-      ...
+      "title": "",
+      "year": "",
+      "image": "",
+      "description": ""
     }
-  ],
-  "sport_category": "string",
-  "member_type": [],
-  "video": "string"
+  ]
 }
+```
+
+Categories JSON object
+
+```
+[
+  {
+    "title": "string",
+    "icon": "string",
+    "image": "string"
+  },
+  {
+    "title": "string",
+    "icon": "string",
+    "image": "string"
+  },
+  {
+    // and so on as required...
+  }
+]
 ```
