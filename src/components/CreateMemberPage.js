@@ -1,6 +1,7 @@
 import React from 'react';
+import CreateMemberForm from './CreateMemberForm';
 
-const CreateMember = () => {
+const CreateMemberPage = () => {
   return (
     <div>
       <h1>Create Member Page</h1>
@@ -10,9 +11,9 @@ const CreateMember = () => {
         Odit obcaecati tenetur natus consequatur saepe totam nam, dolorum quia
         magnam.
       </p>
-      <form />
+      <CreateMemberForm />
     </div>
   );
 };
 
-export default CreateMember;
+export default CreateMemberPage;

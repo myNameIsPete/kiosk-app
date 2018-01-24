@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom';
-import CreateMember from '../components/CreateMember';
+import CreateMemberPage from '../components/CreateMemberPage';
 import Navigation from '../components/Navigation';
 
 const AppRouter = () => (
@@ -8,7 +8,7 @@ const AppRouter = () => (
     <div>
       <header>
         <div className="container">
-          <h1>BASHR Management System</h1>
+          <h1>Kiosk App Data Management System</h1>
         </div>
       </header>
       <div className="container">
@@ -19,8 +19,8 @@ const AppRouter = () => (
           <div className="col-sm-9">
             <main>
               <Switch>
-                <Route path="/" component={CreateMember} exact={true} />
-                <Route component={CreateMember} />
+                <Route path="/" component={CreateMemberPage} exact={true} />
+                <Route component={CreateMemberPage} />
               </Switch>
             </main>
           </div>
