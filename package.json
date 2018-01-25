@@ -24,6 +24,7 @@
     "draft-js": "^0.10.5",
     "express": "^4.16.2",
     "formik": "^0.10.5",
+    "group-array": "^0.3.3",
     "immutable": "^3.8.2",
     "live-server": "^1.2.0",
     "lodash": "^4.17.4",
