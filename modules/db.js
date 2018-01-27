@@ -8,20 +8,24 @@ const url = 'mongodb://localhost:27017';
 // Database Name
 const dbName = 'BASHR';
 
-function getData(query, collectionName, callback) {
+function executeQuery(query, collectionName, callback) {
   query = query || {};
-  MongoClient.connect(url, (err, client) => {
-    const db = client.db(dbName);
-    const collection = db.collection(collectionName);
+  try {
+    MongoClient.connect(url, (err, client) => {
+      const db = client.db(dbName);
+      const collection = db.collection(collectionName);
 
-    collection.find(query).toArray((err, result) => {
-      const members =
-        result.length === 0 ? { message: 'No results found.' } : result;
-      callback(null, members);
+      collection.find(query).toArray((err, result) => {
+        const members =
+          result.length === 0 ? { message: 'No results found.' } : result;
+        callback(null, members);
+      });
+
+      client.close();
     });
-
-    client.close();
-  });
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 function orderByYear(data, callback) {
@@ -30,38 +34,32 @@ function orderByYear(data, callback) {
 }
 
 module.exports = {
-  getAllMembers: function(query, collectionName, response) {
+  getData: (query, collectionName, response) => {
+    executeQuery(query, collectionName, (err, data) => {
+      if (err) return err;
+      response.send({ data });
+    });
+  },
+
+  getDataGroupedByYear: function(query, collectionName, response) {
     async.waterfall(
-      [async.apply(getData, query, collectionName)],
+      [async.apply(executeQuery, query, collectionName), orderByYear],
       (err, result) => response.send({ result })
     );
   },
 
-  getMembersGroupedByYear: function(query, collectionName, response) {
-    async.waterfall(
-      [async.apply(getData, query, collectionName), orderByYear],
-      (err, result) => response.send({ result })
-    );
-  },
-
-  getMembersByType: function(query, collectionName, response) {
-    async.waterfall(
-      [async.apply(getData, query, collectionName)],
-      (err, result) => response.send({ result })
-    );
-  },
-
-  getMembersBySport: function(query, collectionName, response) {
-    async.waterfall(
-      [async.apply(getData, query, collectionName)],
-      (err, result) => response.send({ result })
-    );
-  },
-
-  getMembersBySportGroupedByYear: function(query, collectionName, response) {
-    async.waterfall(
-      [async.apply(getData, query, collectionName), orderByYear],
-      (err, result) => response.send({ result })
-    );
+  postData: function(request, response, collectionName) {
+    MongoClient.connect(url, (err, client) => {
+      try {
+        const db = client.db(dbName);
+        const collection = db.collection(collectionName);
+        collection.insert(request.body, function(err, result) {
+          response.send({ _id: result.ops[0]._id });
+          db.close();
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    });
   }
 };

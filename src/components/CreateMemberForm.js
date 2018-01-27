@@ -2,6 +2,7 @@ import React from 'react';
 import { withFormik, Field, Form } from 'formik';
 import { Editor } from 'react-draft-wysiwyg';
 import Yup from 'yup';
+import axios from 'axios';
 
 import '../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
@@ -45,43 +46,24 @@ const CreationForm = ({ values, error }) => {
         <Field component="select" className="form-control" name="member_type" />
       </div>
 
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-        <label class="form-check-label" for="exampleCheck1">
+      <div className="form-check">
+        <input
+          type="checkbox"
+          className="form-check-input"
+          id="exampleCheck1"
+        />
+        <label className="form-check-label" htmlFor="exampleCheck1">
           Show with Inductees
         </label>
+      </div>
+      <div className="form-group">
+        <button type="submit" className="btn btn-primary">
+          Create Member
+        </button>
       </div>
     </Form>
   );
 };
-
-/*
-
-{
-  "name": "",
-  "year": "",
-  "bio": "",
-  "image": "",
-  "video": "",
-  "member_type": "",
-  "show_with_inductees": true,
-  "memorabilia": [
-    {
-      "title": "",
-      "year": "",
-      "image": "",
-      "description": ""
-    },
-    {
-      "title": "",
-      "year": "",
-      "image": "",
-      "description": ""
-    }
-  ]
-}
-
-*/
 
 const CreateMemberForm = withFormik({
   mapPropsToValues({ name, year }) {
@@ -89,6 +71,11 @@ const CreateMemberForm = withFormik({
       name: name || '',
       year: year || ''
     };
+  },
+  handleSubmit: (values, { setSubmitting }) => {
+    axios
+      .post('http://localhost:3000/api/createMember/')
+      .then(response => console.log(response));
   }
 })(CreationForm);
 
